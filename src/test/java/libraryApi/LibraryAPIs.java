@@ -42,8 +42,8 @@ public class LibraryAPIs {
                     AssertUtility.assertEquals(isbn, data.getIsbn());
                     String aisle = list.get(i).get("aisle").toString();
                     AssertUtility.assertEquals(aisle, data.getAisle());
-//                    StringBuilder sb = new StringBuilder();
-//                    System.out.println(sb.append(list.get(i).get("isbn")).append(list.get(i).get("aisle")));
+/*                    StringBuilder sb = new StringBuilder();
+                    System.out.println(sb.append(list.get(i).get("isbn")).append(list.get(i).get("aisle")));*/
                 }
 
                 // Get details using ID
