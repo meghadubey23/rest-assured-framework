@@ -1,4 +1,4 @@
-package apis.libraryApi;
+package apis.libraryapis;
 
 import lombok.Getter;
 import lombok.Setter;

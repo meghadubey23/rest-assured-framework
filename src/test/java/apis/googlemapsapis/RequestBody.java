@@ -1,4 +1,4 @@
-package apis.googleMapsAPI;
+package apis.googlemapsapis;
 
 public class RequestBody {
 

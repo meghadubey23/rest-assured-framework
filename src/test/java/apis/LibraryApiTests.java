@@ -1,10 +1,10 @@
-package libraryApi;
+package apis;
 
 import Utilities.AssertUtility;
 import Utilities.ParseJson;
 import Utilities.StringUt;
-import apis.libraryApi.BookData;
-import apis.libraryApi.DynamicPayload;
+import apis.libraryapis.BookData;
+import apis.libraryapis.DynamicPayload;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.DataProvider;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class LibraryAPIs {
+public class LibraryApiTests {
 
     @Test(dataProvider = "bok data")
     public void addBook(BookData[] bookData) {
