@@ -6,9 +6,13 @@ import apis.googlemapsapis.AddLocResponse;
 import apis.googlemapsapis.GoogleLocation;
 import apis.googlemapsapis.GooglePojoClass;
 import apis.libraryapis.*;
-import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -47,12 +51,17 @@ public class SerializationAndDeserializationTests {
         expected.setStatus("OK");
         expected.setScope("APP");
 
-        RestAssured.baseURI = "https://rahulshettyacademy.com";
-        AddLocResponse actual = given().log().all().queryParam("key", "qaclick123")
-                .body(googlePojoClass).expect().defaultParser(Parser.JSON)
-                .when().post("/maps/api/place/add/json").as(AddLocResponse.class);
+        /*Breaking this request response using Spec Builders*/
+        //given().spec(requestSpecification).body(googlePojoClass).when().post("/maps/api/place/add/json").then().spec(responseSpecification).extract().response().as(AddLocResponse.class);
 
-        GoogleApiEntity googleApiEntity = new GoogleApiEntity(actual, expected);
+        RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123").setContentType(ContentType.JSON).build();
+        ResponseSpecification responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+
+        RequestSpecification request = given().spec(requestSpecification).body(googlePojoClass);
+
+        AddLocResponse actualResponse = request.when().post("/maps/api/place/add/json").then().spec(responseSpecification).extract().response().as(AddLocResponse.class);
+
+        GoogleApiEntity googleApiEntity = new GoogleApiEntity(actualResponse, expected);
         googleApiEntity.verify();
     }
 
