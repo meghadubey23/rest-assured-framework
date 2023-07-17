@@ -1,6 +1,6 @@
-package googleMapsAPI;
+package apis;
 
-import apis.googleMapsAPI.RequestBody;
+import apis.googlemapsapis.RequestBody;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class GoogleMapsAPIs {
+public class GoogleMapsApiTests {
     public static void main(String[] args) {
 
         //Add loc

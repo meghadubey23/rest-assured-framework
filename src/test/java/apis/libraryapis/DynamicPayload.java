@@ -1,4 +1,4 @@
-package apis.libraryApi;
+package apis.libraryapis;
 
 public class DynamicPayload {
 
