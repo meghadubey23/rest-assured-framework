@@ -2,22 +2,22 @@ package apis.googlemapsapis;
 
 public class GoogleLocation {
 
-    private static String lat;
-    private static String lng;
+    private double lat;
+    private double lng;
 
-    public static String getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public static String getLng() {
+    public double getLng() {
         return lng;
     }
 
-    public void setLng(String lng) {
+    public void setLng(double lng) {
         this.lng = lng;
     }
 }

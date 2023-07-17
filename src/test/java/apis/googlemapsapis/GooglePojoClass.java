@@ -2,28 +2,20 @@ package apis.googlemapsapis;
 
 public class GooglePojoClass {
 
-    private GoogleLocation googleLocation;
-    private String accuracy;
+    private GoogleLocation location;
+    private int accuracy;
     private String name;
     private String phone_number;
     private String address;
-    private String[] types;
     private String website;
     private String language;
+    private String[] types;
 
-    public GoogleLocation getGoogleLocation() {
-        return googleLocation;
-    }
-
-    public void setGoogleLocation(GoogleLocation googleLocation) {
-        this.googleLocation = googleLocation;
-    }
-
-    public String getAccuracy() {
+    public int getAccuracy() {
         return accuracy;
     }
 
-    public void setAccuracy(String accuracy) {
+    public void setAccuracy(int accuracy) {
         this.accuracy = accuracy;
     }
 
@@ -51,14 +43,6 @@ public class GooglePojoClass {
         this.address = address;
     }
 
-    public String[] getTypes() {
-        return types;
-    }
-
-    public void setTypes(String[] types) {
-        this.types = types;
-    }
-
     public String getWebsite() {
         return website;
     }
@@ -73,5 +57,21 @@ public class GooglePojoClass {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String[] getTypes() {
+        return types;
+    }
+
+    public void setTypes(String[] types) {
+        this.types = types;
+    }
+
+    public GoogleLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(GoogleLocation location) {
+        this.location = location;
     }
 }

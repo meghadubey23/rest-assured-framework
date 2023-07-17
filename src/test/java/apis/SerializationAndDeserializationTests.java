@@ -1,9 +1,12 @@
 package apis;
 
+import apis.entity.GoogleApiEntity;
 import apis.entity.LibraryApiEntity;
+import apis.googlemapsapis.AddLocResponse;
 import apis.googlemapsapis.GoogleLocation;
 import apis.googlemapsapis.GooglePojoClass;
 import apis.libraryapis.*;
+import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
@@ -22,24 +25,38 @@ public class SerializationAndDeserializationTests {
      * Create Test class to create an object of POJO class
      * RestAssured to trigger request using Serialization And Deserialization*/
 
-    @Test
+    @Test(description = "Serializing Request and Response of Post Add Google Loc")
     public void GoogleMapsApiTests() {
         GoogleLocation googleLocation = new GoogleLocation();
-        googleLocation.setLat("34.427362");
-        googleLocation.setLng("33.427362");
+        googleLocation.setLat(-34.427362);
+        googleLocation.setLng(35.427362);
 
         GooglePojoClass googlePojoClass = new GooglePojoClass();
-        googlePojoClass.setGoogleLocation(googleLocation);
-        googlePojoClass.setAccuracy("50");
+        googlePojoClass.setLocation(googleLocation);
+        googlePojoClass.setAccuracy(50);
         googlePojoClass.setName("Frontline house123");
         googlePojoClass.setPhone_number("(+91) 983 893 3937");
         googlePojoClass.setAddress("29, side layout, cohen 09");
-        googlePojoClass.setTypes(new String[]{"shoe park", "shop"});
+
+        googlePojoClass.setTypes(new String[]{"test1", "test2"});
+
         googlePojoClass.setWebsite("http://google.com");
         googlePojoClass.setLanguage("French-IN");
+
+        AddLocResponse expected = new AddLocResponse();
+        expected.setStatus("OK");
+        expected.setScope("APP");
+
+        RestAssured.baseURI = "https://rahulshettyacademy.com";
+        AddLocResponse actual = given().log().all().queryParam("key", "qaclick123")
+                .body(googlePojoClass).expect().defaultParser(Parser.JSON)
+                .when().post("/maps/api/place/add/json").as(AddLocResponse.class);
+
+        GoogleApiEntity googleApiEntity = new GoogleApiEntity(actual, expected);
+        googleApiEntity.verify();
     }
 
-    @Test
+    @Test(description = "Deserializing Response of Get Courses Api")
     public void LibraryApiTests() {
         WebAutomation webAutomation1 = new WebAutomation();
         webAutomation1.setCourseTitle("Selenium Webdriver Java");
