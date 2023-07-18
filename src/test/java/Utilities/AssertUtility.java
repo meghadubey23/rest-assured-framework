@@ -1,8 +1,11 @@
 package Utilities;
 
+import org.testng.Assert;
+
 public class AssertUtility {
 
-    public static void assertEquals(String actual, String expected) {
-        org.testng.Assert.assertEquals(actual, expected);
+    public static void assertEquals(Object actual, Object expected, Object value) {
+        Assert.assertEquals(actual, expected);
+        System.out.println("Assert value of " + value + " - " + actual + " equals " + expected);
     }
 }

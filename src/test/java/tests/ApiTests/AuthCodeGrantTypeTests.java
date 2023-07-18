@@ -1,4 +1,4 @@
-package apis;
+package tests.ApiTests;
 
 import io.restassured.parsing.Parser;
 import io.restassured.path.json.JsonPath;

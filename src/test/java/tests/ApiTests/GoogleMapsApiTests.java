@@ -1,4 +1,4 @@
-package apis;
+package tests.ApiTests;
 
 import apis.googlemapsapis.RequestBody;
 import io.restassured.RestAssured;

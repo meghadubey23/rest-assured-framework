@@ -1,8 +1,8 @@
-package apis;
+package tests.ApiTests;
 
 import Utilities.AssertUtility;
-import Utilities.ParseJson;
-import Utilities.StringUt;
+import Utilities.ParseJsonUtility;
+import Utilities.StringUtility;
 import apis.libraryapis.BookData;
 import apis.libraryapis.DynamicPayload;
 import io.restassured.RestAssured;
@@ -25,7 +25,7 @@ public class LibraryApiTests {
                 String responseAddBook = given().log().all().header("Content-Type", "application/json").body(DynamicPayload.addBookPayload(data.getIsbn(), data.getAisle()))
                         .when().post("Library/Addbook.php")
                         .then().log().all().statusCode(200).extract().asString();
-                JsonPath js = ParseJson.convertToJson(responseAddBook);
+                JsonPath js = ParseJsonUtility.convertToJson(responseAddBook);
                 String id = js.getString("ID");
                 System.out.println(id);
 
@@ -34,14 +34,14 @@ public class LibraryApiTests {
                         .when().get("Library/GetBook.php")
                         .then().log().all().statusCode(200).extract().asString();
 
-                var list = ParseJson.responseList(responseUsingAuthorName);
+                var list = ParseJsonUtility.responseList(responseUsingAuthorName);
                 for (int i = 0; i < list.size(); i++) {
                     String bookName = list.get(i).get("book_name").toString();
-                    AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java");
+                    AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java", "bookName");
                     String isbn = list.get(i).get("isbn").toString();
-                    AssertUtility.assertEquals(isbn, data.getIsbn());
+                    AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
-                    AssertUtility.assertEquals(aisle, data.getAisle());
+                    AssertUtility.assertEquals(aisle, data.getAisle(), "aisle");
 /*                    StringBuilder sb = new StringBuilder();
                     System.out.println(sb.append(list.get(i).get("isbn")).append(list.get(i).get("aisle")));*/
                 }
@@ -51,14 +51,14 @@ public class LibraryApiTests {
                         .when().get("Library/GetBook.php")
                         .then().log().all().statusCode(200).extract().asString();
 
-                list = ParseJson.responseList(responseUsingId);
+                list = ParseJsonUtility.responseList(responseUsingId);
                 for (int i = 0; i < list.size(); i++) {
                     String bookName = list.get(i).get("book_name").toString();
-                    AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java");
+                    AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java", "bookName");
                     String isbn = list.get(i).get("isbn").toString();
-                    AssertUtility.assertEquals(isbn, data.getIsbn());
+                    AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
-                    AssertUtility.assertEquals(aisle, data.getAisle());
+                    AssertUtility.assertEquals(aisle, data.getAisle(), "aisle");
                 }
 
                 // Delete using ID
@@ -78,12 +78,12 @@ public class LibraryApiTests {
     @DataProvider(name = "bok data")
     public Object[][] addLibData() {
         BookData addBookData = new BookData();
-        addBookData.setIsbn(StringUt.randomString(5));
-        addBookData.setAisle(StringUt.randomNumeric(5));
+        addBookData.setIsbn(StringUtility.randomString(5));
+        addBookData.setAisle(StringUtility.randomNumeric(5));
 
         BookData addBookData2 = new BookData();
-        addBookData2.setIsbn(StringUt.randomString(5));
-        addBookData2.setAisle(StringUt.randomNumeric(5));
+        addBookData2.setIsbn(StringUtility.randomString(5));
+        addBookData2.setAisle(StringUtility.randomNumeric(5));
 
         BookData[] arr = new BookData[2];
         arr[0] = addBookData;
