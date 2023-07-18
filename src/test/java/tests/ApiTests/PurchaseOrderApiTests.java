@@ -24,7 +24,7 @@ public class PurchaseOrderApiTests extends BaseTest {
         loginRequest.setUserPassword("Iamking@000");
 
         LoginResponse actualResponse = given().relaxedHTTPSValidation().contentType(ContentType.JSON).spec(getRequestSpecification()).body(loginRequest)
-                .when().post("/api/ecom/auth/login")
+                .when().post("/api/ecom/auth/login")//relaxedHTTPSValidation: to bypass SSL verification
                 .then().spec(getResponseSpecification()).extract().response().as(LoginResponse.class);
 
         LoginResponse expectedResponse = new LoginResponse();
@@ -109,17 +109,15 @@ public class PurchaseOrderApiTests extends BaseTest {
         DeleteApiResponse actualResponse = given().spec(getRequestSpecification()).header("Authorization", token)
                 .when().delete("/api/ecom/product/delete-product/" + productId)
                 .then().spec(getResponseSpecification()).extract().response().as(DeleteApiResponse.class);
+        /*
+        * OR:
+        * .pathParam("productId", productId)
+                .when().delete("/api/ecom/product/delete-product/{productId}")*/
 
         DeleteApiResponse expectedResponse = new DeleteApiResponse();
         expectedResponse.setMessage("Product Deleted Successfully");
 
         PurchaseOrderEntity entity = new PurchaseOrderEntity(actualResponse, expectedResponse);
         entity.deleteProduct();
-    }
-
-    @Test
-    public void a() {
-        File file = new File("src/test/resources/images/denim.png");
-        System.out.println(file.exists());
     }
 }
