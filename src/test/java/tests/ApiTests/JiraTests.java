@@ -1,4 +1,4 @@
-package apis;
+package tests.ApiTests;
 
 public class JiraTests {
 }

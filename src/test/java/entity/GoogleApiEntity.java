@@ -1,7 +1,7 @@
-package apis.entity;
+package entity;
 
+import Utilities.AssertUtility;
 import apis.googlemapsapis.AddLocResponse;
-import org.testng.Assert;
 
 public class GoogleApiEntity {
     private AddLocResponse actual;
@@ -13,8 +13,8 @@ public class GoogleApiEntity {
     }
 
     public void verify() {
-        Assert.assertEquals(actual.getStatus(), expected.getStatus());
-        Assert.assertEquals(actual.getScope(), expected.getScope());
+        AssertUtility.assertEquals(actual.getStatus(), expected.getStatus(), "Status");
+        AssertUtility.assertEquals(actual.getScope(), expected.getScope(), "Scope");
 
     }
 }

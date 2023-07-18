@@ -1,11 +1,11 @@
-package apis;
+package tests.ApiTests;
 
-import apis.entity.GoogleApiEntity;
-import apis.entity.LibraryApiEntity;
 import apis.googlemapsapis.AddLocResponse;
 import apis.googlemapsapis.GoogleLocation;
 import apis.googlemapsapis.GooglePojoClass;
 import apis.libraryapis.*;
+import entity.GoogleApiEntity;
+import entity.LibraryApiEntity;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -14,13 +14,14 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.util.Arrays;
 
 import static io.restassured.RestAssured.given;
 
 
-public class SerializationAndDeserializationTests {
+public class SerializationAndDeserializationTests extends BaseTest {
 
     /*
      * Serialization = In RestAssured is a process of converting a Java object into a Request Body(Json)
@@ -29,7 +30,7 @@ public class SerializationAndDeserializationTests {
      * Create Test class to create an object of POJO class
      * RestAssured to trigger request using Serialization And Deserialization*/
 
-    @Test(description = "Serializing Request and Response of Post Add Google Loc")
+    @Test(description = "Serializing Request and Response of Post Add Google Loc", groups = "SerialAndDesrial")
     public void GoogleMapsApiTests() {
         GoogleLocation googleLocation = new GoogleLocation();
         googleLocation.setLat(-34.427362);
@@ -57,9 +58,9 @@ public class SerializationAndDeserializationTests {
         RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123").setContentType(ContentType.JSON).build();
         ResponseSpecification responseSpecification = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
-        RequestSpecification request = given().spec(requestSpecification).body(googlePojoClass);
-
-        AddLocResponse actualResponse = request.when().post("/maps/api/place/add/json").then().spec(responseSpecification).extract().response().as(AddLocResponse.class);
+        AddLocResponse actualResponse = given().spec(requestSpecification).body(googlePojoClass)
+                .when().post("/maps/api/place/add/json")
+                .then().spec(responseSpecification).extract().response().as(AddLocResponse.class);
 
         GoogleApiEntity googleApiEntity = new GoogleApiEntity(actualResponse, expected);
         googleApiEntity.verify();
@@ -112,7 +113,7 @@ public class SerializationAndDeserializationTests {
 //        driver.findElement(By.xpath(".//div/input[@aria-label='Enter your password']")).sendKeys("Niraj@123");
 //        driver.findElement(By.xpath(".//div//span[text()='Next']")).click();
 
-        String url = "https://rahulshettyacademy.com/getCourse.php?code=4%2F0AZEOvhW_A8a_8UMeQurPyJUWIHxmpw471-BMVDwLbV-fppeevMuIRKkT4aucobFF66lScw&scope=email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none";
+        String url = "https://rahulshettyacademy.com/getCourse.php?code=4%2F0AZEOvhV_mFgWBbVnVqGjvmlq-dskxTcQk2_5K4GU-KyprHL9VSGyatUFgaIA94MsfhbRxQ&scope=email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none";
         String partialCode = url.split("code=")[1];
         String code = partialCode.split("&scope")[0];
 
@@ -125,7 +126,7 @@ public class SerializationAndDeserializationTests {
                 .queryParams("session_state", "ff4a89d1f7011eb34eef8cf02ce4353316d9744b..7eb8")
                 // .queryParam("scope", "email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email")
                 .queryParams("redirect_uri", "https://rahulshettyacademy.com/getCourse.php")
-                .when().log().all()
+                .when()
                 .post("https://www.googleapis.com/oauth2/v4/token").asString();
 
         JsonPath jsonPath = new JsonPath(response);

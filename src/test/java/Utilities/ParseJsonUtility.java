@@ -5,7 +5,7 @@ import io.restassured.path.json.JsonPath;
 import java.util.HashMap;
 import java.util.List;
 
-public class ParseJson {
+public class ParseJsonUtility {
 
     public static JsonPath convertToJson(String response) {
         return new JsonPath(response);
