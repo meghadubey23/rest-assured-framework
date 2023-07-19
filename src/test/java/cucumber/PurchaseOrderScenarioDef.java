@@ -1,5 +1,6 @@
 package cucumber;
 
+import Utilities.ResourcesApi;
 import apis.purchaseorderapis.*;
 import entity.PurchaseOrderEntity;
 import io.cucumber.java.BeforeAll;
@@ -13,7 +14,6 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,18 +40,22 @@ public class PurchaseOrderScenarioDef {
         responseSpecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
     }
 
+    private String getResource(String resourceApi) {
+        return ResourcesApi.valueOf(resourceApi).getResource();
+    }
+
     /*
      * Scenario Outline in the feature file is used when we want to parameterize the test data
      * Otherwise just use Scenario*/
-    @Test(groups = "OrdersLogin")
     @Given("Login to your account {string} and {string} {string}")
-    public void loginToYourAccountAnd(String username, String password, String resourceUrl) {
+    public void loginToYourAccountAnd(String username, String password, String resourceApi) {
+
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUserEmail(username);
         loginRequest.setUserPassword(password);
 
         LoginResponse actualResponse = given().relaxedHTTPSValidation().contentType(ContentType.JSON).spec(requestSpecification).body(loginRequest)
-                .when().post(resourceUrl)//relaxedHTTPSValidation: to bypass SSL verification
+                .when().post(getResource(resourceApi))//relaxedHTTPSValidation: to bypass SSL verification
                 .then().spec(responseSpecification).extract().response().as(LoginResponse.class);
 
         LoginResponse expectedResponse = new LoginResponse();
@@ -64,15 +68,15 @@ public class PurchaseOrderScenarioDef {
         this.userId = (actualResponse.getUserId());
     }
 
-    @When("Create a product")
-    public void create_a_product() {
+    @When("Create a product {string}")
+    public void create_a_product(String resourceApi) {
         //FormDataTypeRequest Example
         AddProductResponse actualResponse = given().spec(requestSpecification).contentType(ContentType.MULTIPART).header("Authorization", token).param("productName", "Denim")
                 .param("productAddedBy", userId).param("productCategory", "fashion")
                 .param("productSubCategory", "pants").param("productPrice", "11500")
                 .param("productDescription", "wearables").param("productFor", "men")
                 .multiPart("productImage", new File("src/test/resources/images/denim.png"))
-                .when().post("/api/ecom/product/add-product")
+                .when().post(getResource(resourceApi))
                 .then().spec(responseSpecification).extract().response().as(AddProductResponse.class);
 
         this.productId = actualResponse.getProductId();
@@ -84,17 +88,17 @@ public class PurchaseOrderScenarioDef {
         entity.verifyAddProduct();
     }
 
-    @Then("Place an order")
-    public void place_an_order() {
+    @Then("Place an order for {string} {string}")
+    public void place_an_order(String country, String resourceApi) {
         OrderValueRequest orderValueRequest = new OrderValueRequest();
-        orderValueRequest.setCountry("India");
+        orderValueRequest.setCountry(country);
         orderValueRequest.setProductOrderedId(productId);
 
         CreateOrderRequest request = new CreateOrderRequest();
         request.setOrders(new OrderValueRequest[]{orderValueRequest});
 
         CreateOrderResponse actualResponse = given().spec(requestSpecification).contentType(ContentType.JSON).header("Authorization", token).body(request)
-                .when().post("/api/ecom/order/create-order")
+                .when().post(getResource(resourceApi))
                 .then().spec(responseSpecification).extract().response().as(CreateOrderResponse.class);
 
         CreateOrderResponse expectedResponse = new CreateOrderResponse();
@@ -106,22 +110,22 @@ public class PurchaseOrderScenarioDef {
         this.orderId = actualResponse.getOrders()[0];
     }
 
-    @Then("Get order details {string}")
-    public void getOrderDetails(String transactionType) {
+    @Then("Get order details {string} {string} {string} {string} {string} {string} {string}")
+    public void getOrderDetails(String transactionType, String orderBy, String productName, String country, String description, String orderPrice, String resourceApi) {
         System.out.println("Fetching product details " + transactionType);
         GetOrderDetailsResponse actualResponse = given().spec(requestSpecification).header("Authorization", token).queryParam("id", orderId)
-                .when().get("/api/ecom/order/get-orders-details")
+                .when().get(getResource(resourceApi))
                 .then().spec(responseSpecification).extract().response().as(GetOrderDetailsResponse.class);
 
         DataValuesResponse dataValuesResponse = new DataValuesResponse();
         dataValuesResponse.set_id(orderId);
         dataValuesResponse.setOrderById(userId);
-        dataValuesResponse.setOrderBy("rahulshetty@gmail.com");
+        dataValuesResponse.setOrderBy(orderBy);
         dataValuesResponse.setProductOrderedId(productId);
-        dataValuesResponse.setProductName("Denim");
-        dataValuesResponse.setCountry("India");
-        dataValuesResponse.setProductDescription("wearables");
-        dataValuesResponse.setOrderPrice("11500");
+        dataValuesResponse.setProductName(productName);
+        dataValuesResponse.setCountry(country);
+        dataValuesResponse.setProductDescription(description);
+        dataValuesResponse.setOrderPrice(orderPrice);
         dataValuesResponse.set__v(0);
 
         GetOrderDetailsResponse expectedResponse = new GetOrderDetailsResponse();
@@ -132,10 +136,10 @@ public class PurchaseOrderScenarioDef {
         entity.getOrderDetails();
     }
 
-    @Then("Delete the product")
-    public void delete_the_product() {
+    @Then("Delete the product {string}")
+    public void delete_the_product(String resourceApi) {
         DeleteApiResponse actualResponse = given().spec(requestSpecification).header("Authorization", token)
-                .when().delete("/api/ecom/product/delete-product/" + productId)
+                .when().delete(getResource(resourceApi) + productId)
                 .then().spec(responseSpecification).extract().response().as(DeleteApiResponse.class);
         /*
         * OR:
