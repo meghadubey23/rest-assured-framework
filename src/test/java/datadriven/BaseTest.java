@@ -1,4 +1,4 @@
-package datadriven.tests;
+package datadriven;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -8,10 +8,10 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Properties;
+
+import static Utilities.PropertiesUtility.getPropertyValue;
 
 public class BaseTest {
 
@@ -27,26 +27,13 @@ public class BaseTest {
         return responseSpecification;
     }
 
-    private static String getPropertyValue(String propertyKey) throws IOException {
-        String resourceDirectory = System.getProperty("user.dir") + "/src/test/resources/";
 
-        FileInputStream file = new FileInputStream(resourceDirectory + "test.properties");
-
-        Properties properties = new Properties();
-        properties.load(file);
-
-        return properties.getProperty(propertyKey);
-    }
 
     @BeforeMethod
     public void initiateBaseUri(Method method) throws IOException {
         Test testClass = method.getAnnotation(Test.class);
         String group = testClass.groups()[0];
-        switch (group) {
-            case "Orders":
-                this.baseUri = getPropertyValue(group.toLowerCase() + "." + "baseUri");
-                break;
-        }
+        this.baseUri = getPropertyValue(group.toLowerCase() + "." + "baseUri");
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUri).build();
         responseSpecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
     }

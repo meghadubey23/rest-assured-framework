@@ -1,4 +1,4 @@
-package datadriven.tests.ApiTests;
+package sample;
 
 public class JiraTests {
 }

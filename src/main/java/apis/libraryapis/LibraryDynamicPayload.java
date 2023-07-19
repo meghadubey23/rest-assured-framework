@@ -1,6 +1,6 @@
 package apis.libraryapis;
 
-public class DynamicPayload {
+public class LibraryDynamicPayload {
 
     public static String addBookPayload(String isbn, String aisle) {
         String pl = "{\n" +

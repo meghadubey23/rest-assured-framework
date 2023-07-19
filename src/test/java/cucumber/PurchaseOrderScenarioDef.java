@@ -1,31 +1,54 @@
-package datadriven.tests.ApiTests;
+package cucumber;
 
 import apis.purchaseorderapis.*;
-import datadriven.tests.BaseTest;
 import entity.PurchaseOrderEntity;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
-import org.testng.annotations.Test;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 import static io.restassured.RestAssured.given;
 
-public class PurchaseOrderApiTests extends BaseTest {
+public class PurchaseOrderScenarioDef {
 
+    private String baseUri;
+    private RequestSpecification requestSpecification;
+    private ResponseSpecification responseSpecification;
     private String token;
     private String userId;
     private String productId;
     private String orderId;
 
-    @Test(groups = "Orders")
-    public void purchaseAccountLogin() {
+    @Before
+    public void initiateBaseUri() throws FileNotFoundException {
+        System.out.println("hi");
+        PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
+        this.baseUri = "https://rahulshettyacademy.com";
+        requestSpecification = new RequestSpecBuilder().setBaseUri(baseUri).addFilter(RequestLoggingFilter.logRequestTo(log)).addFilter(ResponseLoggingFilter.logResponseTo(log)).build();
+        responseSpecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
+    }
+
+    @Given("Login to your account")
+    public void login_to_your_account() {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUserEmail("rahulshetty@gmail.com");
         loginRequest.setUserPassword("Iamking@000");
 
-        LoginResponse actualResponse = given().relaxedHTTPSValidation().contentType(ContentType.JSON).spec(getRequestSpecification()).body(loginRequest)
+        LoginResponse actualResponse = given().relaxedHTTPSValidation().contentType(ContentType.JSON).spec(requestSpecification).body(loginRequest)
                 .when().post("/api/ecom/auth/login")//relaxedHTTPSValidation: to bypass SSL verification
-                .then().spec(getResponseSpecification()).extract().response().as(LoginResponse.class);
+                .then().spec(responseSpecification).extract().response().as(LoginResponse.class);
 
         LoginResponse expectedResponse = new LoginResponse();
         expectedResponse.setMessage("Login Successfully");
@@ -37,16 +60,16 @@ public class PurchaseOrderApiTests extends BaseTest {
         this.userId = (actualResponse.getUserId());
     }
 
-    @Test(groups = "Orders", dependsOnMethods = "purchaseAccountLogin")
-    public void addProduct() {
+    @When("Create a product")
+    public void create_a_product() {
         //FormDataTypeRequest Example
-        AddProductResponse actualResponse = given().spec(getRequestSpecification()).contentType(ContentType.MULTIPART).header("Authorization", token).param("productName", "Denim")
+        AddProductResponse actualResponse = given().spec(requestSpecification).contentType(ContentType.MULTIPART).header("Authorization", token).param("productName", "Denim")
                 .param("productAddedBy", userId).param("productCategory", "fashion")
                 .param("productSubCategory", "pants").param("productPrice", "11500")
                 .param("productDescription", "wearables").param("productFor", "men")
                 .multiPart("productImage", new File("src/test/resources/images/denim.png"))
                 .when().post("/api/ecom/product/add-product")
-                .then().spec(getResponseSpecification()).extract().response().as(AddProductResponse.class);
+                .then().spec(responseSpecification).extract().response().as(AddProductResponse.class);
 
         this.productId = actualResponse.getProductId();
 
@@ -57,8 +80,8 @@ public class PurchaseOrderApiTests extends BaseTest {
         entity.verifyAddProduct();
     }
 
-    @Test(groups = "Orders", dependsOnMethods = {"purchaseAccountLogin", "addProduct"})
-    public void createOrder() {
+    @Then("Place an order")
+    public void place_an_order() {
         OrderValueRequest orderValueRequest = new OrderValueRequest();
         orderValueRequest.setCountry("India");
         orderValueRequest.setProductOrderedId(productId);
@@ -66,9 +89,9 @@ public class PurchaseOrderApiTests extends BaseTest {
         CreateOrderRequest request = new CreateOrderRequest();
         request.setOrders(new OrderValueRequest[]{orderValueRequest});
 
-        CreateOrderResponse actualResponse = given().spec(getRequestSpecification()).contentType(ContentType.JSON).header("Authorization", token).body(request)
+        CreateOrderResponse actualResponse = given().spec(requestSpecification).contentType(ContentType.JSON).header("Authorization", token).body(request)
                 .when().post("/api/ecom/order/create-order")
-                .then().spec(getResponseSpecification()).extract().response().as(CreateOrderResponse.class);
+                .then().spec(responseSpecification).extract().response().as(CreateOrderResponse.class);
 
         CreateOrderResponse expectedResponse = new CreateOrderResponse();
         expectedResponse.setProductOrderId(new String[]{productId});
@@ -79,11 +102,11 @@ public class PurchaseOrderApiTests extends BaseTest {
         this.orderId = actualResponse.getOrders()[0];
     }
 
-    @Test(groups = "Orders", dependsOnMethods = {"purchaseAccountLogin", "addProduct", "createOrder"})
+    @Then("Get order details")
     public void getOrderDetails() {
-        GetOrderDetailsResponse actualResponse = given().spec(getRequestSpecification()).header("Authorization", token).queryParam("id", orderId)
+        GetOrderDetailsResponse actualResponse = given().spec(requestSpecification).header("Authorization", token).queryParam("id", orderId)
                 .when().get("/api/ecom/order/get-orders-details")
-                .then().spec(getResponseSpecification()).extract().response().as(GetOrderDetailsResponse.class);
+                .then().spec(responseSpecification).extract().response().as(GetOrderDetailsResponse.class);
 
         DataValuesResponse dataValuesResponse = new DataValuesResponse();
         dataValuesResponse.set_id(orderId);
@@ -104,11 +127,11 @@ public class PurchaseOrderApiTests extends BaseTest {
         entity.getOrderDetails();
     }
 
-    @Test(groups = "Orders", dependsOnMethods = {"purchaseAccountLogin", "addProduct", "createOrder", "getOrderDetails"})
-    public void deleteOrder() {
-        DeleteApiResponse actualResponse = given().spec(getRequestSpecification()).header("Authorization", token)
+    @Then("Delete the product")
+    public void delete_the_product() {
+        DeleteApiResponse actualResponse = given().spec(requestSpecification).header("Authorization", token)
                 .when().delete("/api/ecom/product/delete-product/" + productId)
-                .then().spec(getResponseSpecification()).extract().response().as(DeleteApiResponse.class);
+                .then().spec(responseSpecification).extract().response().as(DeleteApiResponse.class);
         /*
         * OR:
         * .pathParam("productId", productId)
