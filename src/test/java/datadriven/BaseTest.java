@@ -27,8 +27,6 @@ public class BaseTest {
         return responseSpecification;
     }
 
-
-
     @BeforeMethod
     public void initiateBaseUri(Method method) throws IOException {
         Test testClass = method.getAnnotation(Test.class);

@@ -2,7 +2,7 @@ package cucumber;
 
 import apis.purchaseorderapis.*;
 import entity.PurchaseOrderEntity;
-import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,6 +13,7 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,31 +24,34 @@ import static io.restassured.RestAssured.given;
 
 public class PurchaseOrderScenarioDef {
 
-    private String baseUri;
-    private RequestSpecification requestSpecification;
-    private ResponseSpecification responseSpecification;
+    private static String baseUri;
+    private static RequestSpecification requestSpecification;
+    private static ResponseSpecification responseSpecification;
     private String token;
     private String userId;
     private String productId;
     private String orderId;
 
-    @Before
-    public void initiateBaseUri() throws FileNotFoundException {
-        System.out.println("hi");
+    @BeforeAll
+    public static void initiateBaseUri() throws FileNotFoundException {
         PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
-        this.baseUri = "https://rahulshettyacademy.com";
+        baseUri = "https://rahulshettyacademy.com";
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUri).addFilter(RequestLoggingFilter.logRequestTo(log)).addFilter(ResponseLoggingFilter.logResponseTo(log)).build();
         responseSpecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
     }
 
-    @Given("Login to your account")
-    public void login_to_your_account() {
+    /*
+     * Scenario Outline in the feature file is used when we want to parameterize the test data
+     * Otherwise just use Scenario*/
+    @Test(groups = "OrdersLogin")
+    @Given("Login to your account {string} and {string} {string}")
+    public void loginToYourAccountAnd(String username, String password, String resourceUrl) {
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUserEmail("rahulshetty@gmail.com");
-        loginRequest.setUserPassword("Iamking@000");
+        loginRequest.setUserEmail(username);
+        loginRequest.setUserPassword(password);
 
         LoginResponse actualResponse = given().relaxedHTTPSValidation().contentType(ContentType.JSON).spec(requestSpecification).body(loginRequest)
-                .when().post("/api/ecom/auth/login")//relaxedHTTPSValidation: to bypass SSL verification
+                .when().post(resourceUrl)//relaxedHTTPSValidation: to bypass SSL verification
                 .then().spec(responseSpecification).extract().response().as(LoginResponse.class);
 
         LoginResponse expectedResponse = new LoginResponse();
@@ -102,8 +106,9 @@ public class PurchaseOrderScenarioDef {
         this.orderId = actualResponse.getOrders()[0];
     }
 
-    @Then("Get order details")
-    public void getOrderDetails() {
+    @Then("Get order details {string}")
+    public void getOrderDetails(String transactionType) {
+        System.out.println("Fetching product details " + transactionType);
         GetOrderDetailsResponse actualResponse = given().spec(requestSpecification).header("Authorization", token).queryParam("id", orderId)
                 .when().get("/api/ecom/order/get-orders-details")
                 .then().spec(responseSpecification).extract().response().as(GetOrderDetailsResponse.class);
