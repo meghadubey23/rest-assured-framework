@@ -8,7 +8,10 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 public class BaseTest {
 
@@ -24,12 +27,24 @@ public class BaseTest {
         return responseSpecification;
     }
 
+    private static String getPropertyValue(String propertyKey) throws IOException {
+        String resourceDirectory = System.getProperty("user.dir") + "/src/test/resources/";
+
+        FileInputStream file = new FileInputStream(resourceDirectory + "test.properties");
+
+        Properties properties = new Properties();
+        properties.load(file);
+
+        return properties.getProperty(propertyKey);
+    }
+
     @BeforeMethod
-    public void initiateBaseUri(Method method) {
+    public void initiateBaseUri(Method method) throws IOException {
         Test testClass = method.getAnnotation(Test.class);
-        switch (testClass.groups()[0]) {
+        String group = testClass.groups()[0];
+        switch (group) {
             case "Orders":
-                this.baseUri = "https://rahulshettyacademy.com";
+                this.baseUri = getPropertyValue(group.toLowerCase() + "." + "baseUri");
                 break;
         }
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUri).build();
