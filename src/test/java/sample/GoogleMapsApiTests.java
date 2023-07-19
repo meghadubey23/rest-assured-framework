@@ -1,19 +1,22 @@
-package tests.ApiTests;
+package sample;
 
-import apis.googlemapsapis.RequestBody;
+import apis.googlemapsapis.GoogleDynamicPayload;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class GoogleMapsApiTests {
-    public static void main(String[] args) {
+
+    @Test
+    public void googleApis() {
 
         //Add loc
         RestAssured.baseURI = "https://rahulshettyacademy.com";
-        String response = given().log().all().queryParam("key", "qaclick123").body(RequestBody.postRequestBody())
+        String response = given().log().all().queryParam("key", "qaclick123").body(GoogleDynamicPayload.postRequestBody())
                 .when().put("maps/api/place/add/json")
                 .then().log().all().assertThat().statusCode(200).header("Server", "Apache/2.4.52 (Ubuntu)").body("scope", equalTo("APP")).extract().asString(); //verify header and body here directly
 
@@ -28,7 +31,7 @@ public class GoogleMapsApiTests {
 
         //update loc
         String updateLocResponse = given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
-                .body(RequestBody.putRequestBody(place_id))
+                .body(GoogleDynamicPayload.putRequestBody(place_id))
                 .when().put("maps/api/place/update/json")
                 .then().assertThat().log().all().statusCode(200).body("msg", equalTo("Address successfully updated")).extract().asString();
 
@@ -38,7 +41,7 @@ public class GoogleMapsApiTests {
 
         //delete loc
         String delLocResponse = given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
-                .body(RequestBody.deleteReqBody(place_id))
+                .body(GoogleDynamicPayload.deleteReqBody(place_id))
                 .when().put("maps/api/place/delete/json")
                 .then().log().all().assertThat().statusCode(200).body("status", equalTo("OK")).extract().asString();
 

@@ -1,4 +1,4 @@
-package tests;
+package datadriven;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -8,7 +8,10 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+
+import static Utilities.PropertiesUtility.getPropertyValue;
 
 public class BaseTest {
 
@@ -24,14 +27,13 @@ public class BaseTest {
         return responseSpecification;
     }
 
+
+
     @BeforeMethod
-    public void initiateBaseUri(Method method) {
+    public void initiateBaseUri(Method method) throws IOException {
         Test testClass = method.getAnnotation(Test.class);
-        switch (testClass.groups()[0]) {
-            case "Orders":
-                this.baseUri = "https://rahulshettyacademy.com";
-                break;
-        }
+        String group = testClass.groups()[0];
+        this.baseUri = getPropertyValue(group.toLowerCase() + "." + "baseUri");
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUri).build();
         responseSpecification = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
     }

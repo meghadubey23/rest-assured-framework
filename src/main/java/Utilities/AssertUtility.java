@@ -1,6 +1,6 @@
 package Utilities;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 public class AssertUtility {
 

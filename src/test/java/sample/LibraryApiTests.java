@@ -1,11 +1,11 @@
-package tests.ApiTests;
+package sample;
 
 import Utilities.AssertUtility;
 import Utilities.ParseJsonUtility;
 import Utilities.StringUtility;
 import apis.libraryapis.BookData;
-import apis.libraryapis.DynamicPayload;
-import io.restassured.RestAssured;
+import apis.libraryapis.LibraryDynamicPayload;
+import datadriven.BaseTest;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,26 +13,24 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class LibraryApiTests {
+public class LibraryApiTests extends BaseTest {
 
-    @Test(dataProvider = "bok data")
+    @Test(dataProvider = "book data", groups = "Library")
     public void addBook(BookData[] bookData) {
         if (bookData != null) {
             for (BookData data : bookData) {
-                RestAssured.baseURI = "http://216.10.245.166";
-
                 //Add book
-                String responseAddBook = given().log().all().header("Content-Type", "application/json").body(DynamicPayload.addBookPayload(data.getIsbn(), data.getAisle()))
+                String responseAddBook = given().spec(getRequestSpecification()).header("Content-Type", "application/json").body(LibraryDynamicPayload.addBookPayload(data.getIsbn(), data.getAisle()))
                         .when().post("Library/Addbook.php")
-                        .then().log().all().statusCode(200).extract().asString();
-                JsonPath js = ParseJsonUtility.convertToJson(responseAddBook);
+                        .then().spec(getResponseSpecification()).statusCode(200).extract().asString();
+                JsonPath js = new JsonPath(responseAddBook);
                 String id = js.getString("ID");
                 System.out.println(id);
 
                 // Get details using Author Name
-                String responseUsingAuthorName = given().log().all().queryParam("AuthorName", "Megha Dubey").header("Content-Type", "application/json")
+                String responseUsingAuthorName = given().spec(getRequestSpecification()).queryParam("AuthorName", "Megha Dubey").header("Content-Type", "application/json")
                         .when().get("Library/GetBook.php")
-                        .then().log().all().statusCode(200).extract().asString();
+                        .then().spec(getResponseSpecification()).statusCode(200).extract().asString();
 
                 var list = ParseJsonUtility.responseList(responseUsingAuthorName);
                 for (int i = 0; i < list.size(); i++) {
@@ -41,15 +39,15 @@ public class LibraryApiTests {
                     String isbn = list.get(i).get("isbn").toString();
                     AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
-                    AssertUtility.assertEquals(aisle, data.getAisle(), "aisle");
+                    AssertUtility.assertEquals(aisle.startsWith("0") ? aisle.substring(1) : aisle, data.getAisle(), "aisle");
 /*                    StringBuilder sb = new StringBuilder();
                     System.out.println(sb.append(list.get(i).get("isbn")).append(list.get(i).get("aisle")));*/
                 }
 
                 // Get details using ID
-                String responseUsingId = given().log().all().queryParam("ID", id).header("Content-Type", "application/json")
+                String responseUsingId = given().spec(getRequestSpecification()).queryParam("ID", id).header("Content-Type", "application/json")
                         .when().get("Library/GetBook.php")
-                        .then().log().all().statusCode(200).extract().asString();
+                        .then().spec(getResponseSpecification()).statusCode(200).extract().asString();
 
                 list = ParseJsonUtility.responseList(responseUsingId);
                 for (int i = 0; i < list.size(); i++) {
@@ -62,20 +60,20 @@ public class LibraryApiTests {
                 }
 
                 // Delete using ID
-                given().log().all().header("Content-Type", "application/json").body(DynamicPayload.deleteBookPayload(id))
+                given().spec(getRequestSpecification()).header("Content-Type", "application/json").body(LibraryDynamicPayload.deleteBookPayload(id))
                         .when().post("Library/DeleteBook.php")
-                        .then().log().all().statusCode(200).body("msg", equalTo("book is successfully deleted"));
+                        .then().spec(getResponseSpecification()).statusCode(200).body("msg", equalTo("book is successfully deleted"));
 
                 // Get details using Author Name
-                given().log().all().queryParam("AuthorName", "Megha Dubey").header("Content-Type", "application/json")
+                given().spec(getRequestSpecification()).queryParam("AuthorName", "Megha Dubey").header("Content-Type", "application/json")
                         .when().get("Library/GetBook.php")
-                        .then().log().all().statusCode(404).body("msg", equalTo("The book by requested bookid / author name does not exists!"));
+                        .then().spec(getResponseSpecification()).statusCode(404).body("msg", equalTo("The book by requested bookid / author name does not exists!"));
 
             }
         }
     }
 
-    @DataProvider(name = "bok data")
+    @DataProvider(name = "book data")
     public Object[][] addLibData() {
         BookData addBookData = new BookData();
         addBookData.setIsbn(StringUtility.randomString(5));

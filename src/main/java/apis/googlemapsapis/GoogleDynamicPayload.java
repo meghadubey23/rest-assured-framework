@@ -1,6 +1,6 @@
 package apis.googlemapsapis;
 
-public class RequestBody {
+public class GoogleDynamicPayload {
 
     public static String postRequestBody() {
         String request = "{\n" +
