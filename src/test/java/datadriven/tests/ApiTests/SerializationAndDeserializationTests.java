@@ -1,9 +1,10 @@
-package tests.ApiTests;
+package datadriven.tests.ApiTests;
 
 import apis.googlemapsapis.AddLocResponse;
 import apis.googlemapsapis.GoogleLocation;
 import apis.googlemapsapis.GooglePojoClass;
 import apis.libraryapis.*;
+import datadriven.tests.BaseTest;
 import entity.GoogleApiEntity;
 import entity.LibraryApiEntity;
 import io.restassured.builder.RequestSpecBuilder;
@@ -14,7 +15,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
-import tests.BaseTest;
 
 import java.util.Arrays;
 

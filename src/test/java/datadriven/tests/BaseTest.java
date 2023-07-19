@@ -1,4 +1,4 @@
-package tests;
+package datadriven.tests;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;

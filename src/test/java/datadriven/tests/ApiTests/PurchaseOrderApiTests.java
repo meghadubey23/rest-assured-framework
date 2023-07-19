@@ -1,10 +1,10 @@
-package tests.ApiTests;
+package datadriven.tests.ApiTests;
 
 import apis.purchaseorderapis.*;
+import datadriven.tests.BaseTest;
 import entity.PurchaseOrderEntity;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
-import tests.BaseTest;
 
 import java.io.File;
 

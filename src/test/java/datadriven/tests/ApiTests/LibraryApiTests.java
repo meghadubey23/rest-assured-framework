@@ -1,4 +1,4 @@
-package tests.ApiTests;
+package datadriven.tests.ApiTests;
 
 import Utilities.AssertUtility;
 import Utilities.ParseJsonUtility;
