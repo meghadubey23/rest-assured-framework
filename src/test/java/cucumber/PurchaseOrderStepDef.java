@@ -22,15 +22,15 @@ import java.io.PrintStream;
 
 import static io.restassured.RestAssured.given;
 
-public class PurchaseOrderScenarioDef {
+public class PurchaseOrderStepDef {
 
     private static String baseUri;
     private static RequestSpecification requestSpecification;
     private static ResponseSpecification responseSpecification;
-    private String token;
-    private String userId;
-    private String productId;
-    private String orderId;
+    public static String productId;
+    private static String token;
+    private static String userId;
+    private static String orderId;
 
     @BeforeAll
     public static void initiateBaseUri() throws FileNotFoundException {
@@ -129,8 +129,11 @@ public class PurchaseOrderScenarioDef {
         dataValuesResponse.set__v(0);
 
         GetOrderDetailsResponse expectedResponse = new GetOrderDetailsResponse();
-        expectedResponse.setData(dataValuesResponse);
-        expectedResponse.setMessage("Orders fetched for customer Successfully");
+        if (!transactionType.contains("after deleting")) {
+            expectedResponse.setData(dataValuesResponse);
+            expectedResponse.setMessage("Orders fetched for customer Successfully");
+        } else
+            expectedResponse.setMessage("Order not found");
 
         PurchaseOrderEntity entity = new PurchaseOrderEntity(actualResponse, expectedResponse);
         entity.getOrderDetails();
@@ -150,6 +153,23 @@ public class PurchaseOrderScenarioDef {
         expectedResponse.setMessage("Product Deleted Successfully");
 
         PurchaseOrderEntity entity = new PurchaseOrderEntity(actualResponse, expectedResponse);
-        entity.deleteProduct();
+        entity.deleteProductOrOrders();
+    }
+
+    @Then("Delete the order {string}")
+    public void delete_the_order(String resourceApi) {
+        DeleteApiResponse actualResponse = given().spec(requestSpecification).header("Authorization", token)
+                .when().delete(getResource(resourceApi) + orderId)
+                .then().spec(responseSpecification).extract().response().as(DeleteApiResponse.class);
+        /*
+        * OR:
+        * .pathParam("orderId", orderId)
+                .when().delete("/api/ecom/order/delete-order/{orderId}")*/
+
+        DeleteApiResponse expectedResponse = new DeleteApiResponse();
+        expectedResponse.setMessage("Orders Deleted Successfully");
+
+        PurchaseOrderEntity entity = new PurchaseOrderEntity(actualResponse, expectedResponse);
+        entity.deleteProductOrOrders();
     }
 }

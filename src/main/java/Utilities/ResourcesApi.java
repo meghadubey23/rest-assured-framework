@@ -6,7 +6,8 @@ public enum ResourcesApi {
     OrdersAddProductApi("/api/ecom/product/add-product"),
     OrdersCreateProductApi("/api/ecom/order/create-order"),
     OrdersGetDetailsApi("/api/ecom/order/get-orders-details"),
-    OrdersDeleteProductApi("/api/ecom/product/delete-product/");
+    OrdersDeleteProductApi("/api/ecom/product/delete-product/"),
+    OrdersDeleteOrderApi("/api/ecom/order/delete-order/");
 
     private String resourceApi;
 
