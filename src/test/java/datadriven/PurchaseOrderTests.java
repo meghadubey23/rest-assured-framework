@@ -117,6 +117,6 @@ public class PurchaseOrderTests extends BaseTest {
         expectedResponse.setMessage("Product Deleted Successfully");
 
         PurchaseOrderEntity entity = new PurchaseOrderEntity(actualResponse, expectedResponse);
-        entity.deleteProduct();
+        entity.deleteProductOrOrders();
     }
 }
