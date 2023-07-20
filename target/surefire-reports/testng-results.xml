@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-07-20T03:04:27 EDT" name="Surefire suite" finished-at="2023-07-20T03:04:50 EDT" duration-ms="23258">
+    <groups>
+      <group name="Orders">
+        <method signature="PurchaseOrderTests.purchaseAccountLogin()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" name="purchaseAccountLogin" class="datadriven.PurchaseOrderTests"/>
+        <method signature="PurchaseOrderTests.addProduct()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" name="addProduct" class="datadriven.PurchaseOrderTests"/>
+        <method signature="PurchaseOrderTests.createOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" name="createOrder" class="datadriven.PurchaseOrderTests"/>
+        <method signature="PurchaseOrderTests.getOrderDetails()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" name="getOrderDetails" class="datadriven.PurchaseOrderTests"/>
+        <method signature="PurchaseOrderTests.deleteOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" name="deleteOrder" class="datadriven.PurchaseOrderTests"/>
+      </group> <!-- Orders -->
+      <group name="Library">
+        <method signature="LibraryApiTests.addBook([Lapis.libraryapis.BookData;)[pri:0, instance:sample.LibraryApiTests@54c562f7]" name="addBook" class="sample.LibraryApiTests"/>
+      </group> <!-- Library -->
+      <group name="GoogleMaps">
+        <method signature="GoogleMapsTests.googleAddLocation()[pri:0, instance:datadriven.GoogleMapsTests@4df50bcc]" name="googleAddLocation" class="datadriven.GoogleMapsTests"/>
+      </group> <!-- GoogleMaps -->
+    </groups>
+    <test started-at="2023-07-20T03:04:27 EDT" name="Surefire test" finished-at="2023-07-20T03:04:50 EDT" duration-ms="23258">
+      <class name="sample.LibraryApiTests">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:sample.LibraryApiTests@54c562f7]" started-at="2023-07-20T03:04:42 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:42 EDT" duration-ms="5" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void sample.LibraryApiTests.addBook(apis.libraryapis.BookData[])]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="addBook([Lapis.libraryapis.BookData;)[pri:0, instance:sample.LibraryApiTests@54c562f7]" started-at="2023-07-20T03:04:42 EDT" name="addBook" data-provider="book data" finished-at="2023-07-20T03:04:50 EDT" duration-ms="8388" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Lapis.libraryapis.BookData;@e3899fd]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addBook -->
+      </class> <!-- sample.LibraryApiTests -->
+      <class name="datadriven.GoogleMapsTests">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.GoogleMapsTests@4df50bcc]" started-at="2023-07-20T03:04:35 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:35 EDT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.GoogleMapsTests.googleAddLocation()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="googleAddLocation()[pri:0, instance:datadriven.GoogleMapsTests@4df50bcc]" started-at="2023-07-20T03:04:35 EDT" name="googleAddLocation" description="Serializing Request and Deserializing Response of Post Add Google Loc" finished-at="2023-07-20T03:04:36 EDT" duration-ms="996" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- googleAddLocation -->
+      </class> <!-- datadriven.GoogleMapsTests -->
+      <class name="datadriven.PurchaseOrderTests">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:27 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:27 EDT" duration-ms="744" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.PurchaseOrderTests.purchaseAccountLogin()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="purchaseAccountLogin()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:27 EDT" name="purchaseAccountLogin" finished-at="2023-07-20T03:04:31 EDT" duration-ms="3121" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- purchaseAccountLogin -->
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:31 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:31 EDT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.PurchaseOrderTests.addProduct()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="addProduct()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:31 EDT" name="addProduct" finished-at="2023-07-20T03:04:32 EDT" depends-on-methods="datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="1661" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addProduct -->
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:32 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:32 EDT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.PurchaseOrderTests.createOrder()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="createOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:32 EDT" name="createOrder" finished-at="2023-07-20T03:04:33 EDT" depends-on-methods="datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="798" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createOrder -->
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:33 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:33 EDT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.PurchaseOrderTests.getOrderDetails()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="getOrderDetails()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:33 EDT" name="getOrderDetails" finished-at="2023-07-20T03:04:34 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="854" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getOrderDetails -->
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:34 EDT" name="initiateBaseUri" finished-at="2023-07-20T03:04:34 EDT" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void datadriven.PurchaseOrderTests.deleteOrder()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateBaseUri -->
+        <test-method signature="deleteOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6b19b79]" started-at="2023-07-20T03:04:34 EDT" name="deleteOrder" finished-at="2023-07-20T03:04:35 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.getOrderDetails, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="977" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteOrder -->
+      </class> <!-- datadriven.PurchaseOrderTests -->
+      <class name="sample.GoogleMapsApiTests">
+        <test-method signature="googleApis()[pri:0, instance:sample.GoogleMapsApiTests@63a65a25]" started-at="2023-07-20T03:04:36 EDT" name="googleApis" finished-at="2023-07-20T03:04:42 EDT" duration-ms="5530" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- googleApis -->
+      </class> <!-- sample.GoogleMapsApiTests -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
