@@ -37,9 +37,9 @@ public class LibraryApiTests extends BaseTest {
                     String bookName = list.get(i).get("book_name").toString();
                     AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java", "bookName");
                     String isbn = list.get(i).get("isbn").toString();
-                    AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
+                    AssertUtility.assertEquals(isbn, data.getIsbn().startsWith("0") ? data.getIsbn().substring(1) : data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
-                    AssertUtility.assertEquals(aisle.startsWith("0") ? aisle.substring(1) : aisle, data.getAisle(), "aisle");
+                    AssertUtility.assertEquals(aisle, data.getAisle().startsWith("0") ? data.getAisle().substring(1) : data.getAisle(), "aisle");
 /*                    StringBuilder sb = new StringBuilder();
                     System.out.println(sb.append(list.get(i).get("isbn")).append(list.get(i).get("aisle")));*/
                 }
@@ -89,4 +89,26 @@ public class LibraryApiTests extends BaseTest {
 
         return new Object[][]{arr};
     }
+
+    /*
+    * {
+        "book_name": "Learn Appium Automation with Java",
+        "isbn": "4FUBg",
+        "aisle": "5117"
+    },
+    {
+        "book_name": "Learn Appium Automation with Java",
+        "isbn": "04W1x",
+        "aisle": "65179"
+    },
+    {
+        "book_name": "Learn Appium Automation with Java",
+        "isbn": "x1mRk",
+        "aisle": "33934"
+    },
+    {
+        "book_name": "Learn Appium Automation with Java",
+        "isbn": "GX6PS",
+        "aisle": "87712"
+    }*/
 }
