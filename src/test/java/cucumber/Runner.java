@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/cucumber",
-        glue = {"cucumber"})
+        glue = {"cucumber"}, tags = "@AddProductAndOrder")
 public class Runner {
 
 }
