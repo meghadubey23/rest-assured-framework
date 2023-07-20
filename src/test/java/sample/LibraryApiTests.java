@@ -37,7 +37,7 @@ public class LibraryApiTests extends BaseTest {
                     String bookName = list.get(i).get("book_name").toString();
                     AssertUtility.assertEquals(bookName, "Learn Appium Automation with Java", "bookName");
                     String isbn = list.get(i).get("isbn").toString();
-                    AssertUtility.assertEquals(isbn, data.getIsbn().startsWith("0") ? data.getIsbn().substring(1) : data.getIsbn(), "isbn");
+                    AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
                     AssertUtility.assertEquals(aisle, data.getAisle().startsWith("0") ? data.getAisle().substring(1) : data.getAisle(), "aisle");
 /*                    StringBuilder sb = new StringBuilder();
@@ -56,7 +56,7 @@ public class LibraryApiTests extends BaseTest {
                     String isbn = list.get(i).get("isbn").toString();
                     AssertUtility.assertEquals(isbn, data.getIsbn(), "isbn");
                     String aisle = list.get(i).get("aisle").toString();
-                    AssertUtility.assertEquals(aisle, data.getAisle(), "aisle");
+                    AssertUtility.assertEquals(aisle, data.getAisle().startsWith("0") ? data.getAisle().substring(1) : data.getAisle(), "aisle");
                 }
 
                 // Delete using ID
