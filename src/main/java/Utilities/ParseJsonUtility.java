@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ParseJsonUtility {
 
-    private static JsonPath convertToJson(String response) {
+    public static JsonPath convertToJson(String response) {
         return new JsonPath(response);
     }
 

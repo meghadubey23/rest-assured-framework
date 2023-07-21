@@ -15,7 +15,7 @@ Body:
     "userPassword": "Iamking@000"
 }
 HTTP/1.1 200 OK
-Date: Thu, 20 Jul 2023 05:31:53 GMT
+Date: Fri, 21 Jul 2023 02:14:23 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
 X-DNS-Prefetch-Control: off
@@ -30,13 +30,13 @@ X-XSS-Protection: 0
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 360
-ETag: W/"168-rHxF/X56qDfjGzioKUhhQPnlfwk"
+ETag: W/"168-feXF91ProtuHgxUOKBDt3cLnC8c"
 Vary: Accept-Encoding
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5ODMxMTEzLCJleHAiOjE3MjEzODg3MTN9.V4SDkU4jkvkdl1CqhkC6W7CE6a89VkHgcVv9qpfcWWo",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjYzLCJleHAiOjE3MjE0NjMyNjN9.LN20_ySllNHF-Ni_l2P6pMSB89XSMuh8-07NJUdtqBU",
     "userId": "62742549e26b7e1a10e9fce0",
     "message": "Login Successfully"
 }
@@ -53,7 +53,7 @@ Request params:	productName=Denim
 Query params:	<none>
 Form params:	<none>
 Path params:	<none>
-Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5ODMxMTEzLCJleHAiOjE3MjEzODg3MTN9.V4SDkU4jkvkdl1CqhkC6W7CE6a89VkHgcVv9qpfcWWo
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjYzLCJleHAiOjE3MjE0NjMyNjN9.LN20_ySllNHF-Ni_l2P6pMSB89XSMuh8-07NJUdtqBU
 				Accept=*/*
 				Content-Type=multipart/form-data
 Cookies:		<none>
@@ -64,7 +64,7 @@ Multiparts:		------------
 				src/test/resources/images/denim.png
 Body:			<none>
 HTTP/1.1 201 Created
-Date: Thu, 20 Jul 2023 05:31:54 GMT
+Date: Fri, 21 Jul 2023 02:14:24 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
 X-DNS-Prefetch-Control: off
@@ -79,13 +79,13 @@ X-XSS-Protection: 0
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 79
-ETag: W/"4f-LSG8Q1gcPIxaLXgu3cjNb4Nt7KQ"
+ETag: W/"4f-ArvtpIz3lGeFuL7SR9zVVAtI15I"
 Vary: Accept-Encoding
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 
 {
-    "productId": "64b8c6ca7244490f95861871",
+    "productId": "64b9ea007244490f9587269a",
     "message": "Product Added Successfully"
 }
 Request method:	POST
@@ -95,7 +95,7 @@ Request params:	<none>
 Query params:	<none>
 Form params:	<none>
 Path params:	<none>
-Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5ODMxMTEzLCJleHAiOjE3MjEzODg3MTN9.V4SDkU4jkvkdl1CqhkC6W7CE6a89VkHgcVv9qpfcWWo
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjYzLCJleHAiOjE3MjE0NjMyNjN9.LN20_ySllNHF-Ni_l2P6pMSB89XSMuh8-07NJUdtqBU
 				Accept=*/*
 				Content-Type=application/json
 Cookies:		<none>
@@ -105,12 +105,12 @@ Body:
     "orders": [
         {
             "country": "India",
-            "productOrderedId": "64b8c6ca7244490f95861871"
+            "productOrderedId": "64b9ea007244490f9587269a"
         }
     ]
 }
 HTTP/1.1 201 Created
-Date: Thu, 20 Jul 2023 05:31:55 GMT
+Date: Fri, 21 Jul 2023 02:14:25 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
 X-DNS-Prefetch-Control: off
@@ -125,17 +125,214 @@ X-XSS-Protection: 0
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 123
-ETag: W/"7b-hQUqeor+49Yiy4SufbNn2mg15ns"
+ETag: W/"7b-Lp2fQEOL+kG2kfEIPC0iY4ZVRlU"
 Vary: Accept-Encoding
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
 
 {
     "orders": [
-        "64b8c6cb7244490f9586187e"
+        "64b9ea017244490f9587269e"
     ],
     "productOrderId": [
-        "64b8c6ca7244490f95861871"
+        "64b9ea007244490f9587269a"
     ],
     "message": "Order Placed Successfully"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/api/ecom/auth/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "userEmail": "rahulshetty@gmail.com",
+    "userPassword": "Iamking@000"
+}
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 02:14:26 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 360
+ETag: W/"168-UV1f3pXCxFxkyQisiloMgTQ4wi4"
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjY2LCJleHAiOjE3MjE0NjMyNjZ9.cFHC2_o96Qz7VwvdowDUx-Y3mGNHzJ2mcTdo8hR3EvI",
+    "userId": "62742549e26b7e1a10e9fce0",
+    "message": "Login Successfully"
+}
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=64b9ea017244490f9587269e
+Proxy:			<none>
+Request params:	<none>
+Query params:	id=64b9ea017244490f9587269e
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjY2LCJleHAiOjE3MjE0NjMyNjZ9.cFHC2_o96Qz7VwvdowDUx-Y3mGNHzJ2mcTdo8hR3EvI
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 02:14:26 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 413
+ETag: W/"19d-sMByFNy4sHJxzuJ/05hd8/4FzHQ"
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+{
+    "data": {
+        "_id": "64b9ea017244490f9587269e",
+        "orderById": "62742549e26b7e1a10e9fce0",
+        "orderBy": "rahulshetty@gmail.com",
+        "productOrderedId": "64b9ea007244490f9587269a",
+        "productName": "Denim",
+        "country": "India",
+        "productDescription": "wearables",
+        "productImage": "https://rahulshettyacademy.com/api/ecom/uploads/productImage_1689905664211.png",
+        "orderPrice": "11500",
+        "__v": 0
+    },
+    "message": "Orders fetched for customer Successfully"
+}
+Request method:	DELETE
+Request URI:	https://rahulshettyacademy.com/api/ecom/product/delete-product/64b9ea007244490f9587269a
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjY2LCJleHAiOjE3MjE0NjMyNjZ9.cFHC2_o96Qz7VwvdowDUx-Y3mGNHzJ2mcTdo8hR3EvI
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 02:14:27 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 42
+ETag: W/"2a-2mOwR6FOFcYds+NaVy6wWIOyKCY"
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+{
+    "message": "Product Deleted Successfully"
+}
+Request method:	DELETE
+Request URI:	https://rahulshettyacademy.com/api/ecom/order/delete-order/64b9ea017244490f9587269e
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjY2LCJleHAiOjE3MjE0NjMyNjZ9.cFHC2_o96Qz7VwvdowDUx-Y3mGNHzJ2mcTdo8hR3EvI
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Fri, 21 Jul 2023 02:14:28 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 41
+ETag: W/"29-bffoZhIu2/PhrYGwacnOeGY9WaM"
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+{
+    "message": "Orders Deleted Successfully"
+}
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=64b9ea017244490f9587269e
+Proxy:			<none>
+Request params:	<none>
+Query params:	id=64b9ea017244490f9587269e
+Form params:	<none>
+Path params:	<none>
+Headers:		Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mjc0MjU0OWUyNmI3ZTFhMTBlOWZjZTAiLCJ1c2VyRW1haWwiOiJyYWh1bHNoZXR0eUBnbWFpbC5jb20iLCJ1c2VyTW9iaWxlIjo5NTQzNjQ1NzU0LCJ1c2VyUm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg5OTA1NjY2LCJleHAiOjE3MjE0NjMyNjZ9.cFHC2_o96Qz7VwvdowDUx-Y3mGNHzJ2mcTdo8hR3EvI
+				Accept=*/*
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 400 Bad Request
+Date: Fri, 21 Jul 2023 02:14:29 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 29
+ETag: W/"1d-fZXiF03Bm+R1qrG0y4tL2TyWwOk"
+Vary: Accept-Encoding
+Connection: close
+
+{
+    "message": "Order not found"
 }

@@ -1,4 +1,4 @@
-package cucumber;
+package stepDefinition;
 
 import Utilities.ResourcesApi;
 import apis.purchaseorderapis.*;
