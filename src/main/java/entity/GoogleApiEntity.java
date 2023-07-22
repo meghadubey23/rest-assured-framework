@@ -1,19 +1,38 @@
 package entity;
 
-import Utilities.AssertUtility;
+import apis.BaseApi;
 import apis.googlemapsapis.AddLocResponse;
 
-public class GoogleApiEntity extends BaseEntity {
-    private AddLocResponse actual;
-    private AddLocResponse expected;
+import java.util.ArrayList;
+import java.util.List;
 
-    public GoogleApiEntity(AddLocResponse actual, AddLocResponse expected) {
-        this.actual = actual;
-        this.expected = expected;
+public class GoogleApiEntity extends BaseEntity {
+    private final BaseApi actualResponse;
+    private final BaseApi expectedResponse;
+
+    public GoogleApiEntity(BaseApi actualResponse, BaseApi expectedResponse) {
+        this.actualResponse = actualResponse;
+        this.expectedResponse = expectedResponse;
     }
 
     public void verify() {
-        AssertUtility.assertEquals(actual.getStatus(), expected.getStatus(), "Status");
-        AssertUtility.assertEquals(actual.getScope(), expected.getScope(), "Scope");
+        AddLocResponse actual = (AddLocResponse) actualResponse;
+        AddLocResponse expected = (AddLocResponse) expectedResponse;
+
+        List<String[]> list = new ArrayList<>();
+
+        String[] subList = new String[3];
+        subList[0] = actual.getStatus();
+        subList[1] = expected.getStatus();
+        subList[2] = "Status";
+        list.add(subList);
+
+        subList = new String[3];
+        subList[0] = actual.getStatus();
+        subList[1] = expected.getStatus();
+        subList[2] = "Scope";
+        list.add(subList);
+
+        verify(list);
     }
 }

@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-07-20T22:14:44 EDT" name="Surefire suite" finished-at="2023-07-20T22:15:07 EDT" duration-ms="22695">
+  <suite started-at="2023-07-20T23:45:22 EDT" name="Surefire suite" finished-at="2023-07-20T23:45:45 EDT" duration-ms="22690">
     <groups>
       <group name="Orders">
         <method signature="PurchaseOrderTests.purchaseAccountLogin()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" name="purchaseAccountLogin" class="datadriven.PurchaseOrderTests"/>
@@ -18,9 +18,9 @@
         <method signature="GoogleMapsTests.googleAddLocation()[pri:0, instance:datadriven.GoogleMapsTests@77167fb7]" name="googleAddLocation" class="datadriven.GoogleMapsTests"/>
       </group> <!-- GoogleMaps -->
     </groups>
-    <test started-at="2023-07-20T22:14:44 EDT" name="Surefire test" finished-at="2023-07-20T22:15:07 EDT" duration-ms="22695">
+    <test started-at="2023-07-20T23:45:22 EDT" name="Surefire test" finished-at="2023-07-20T23:45:45 EDT" duration-ms="22690">
       <class name="sample.LibraryApiTests">
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:sample.LibraryApiTests@6973bf95]" started-at="2023-07-20T22:14:59 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:59 EDT" duration-ms="4" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:sample.LibraryApiTests@6973bf95]" started-at="2023-07-20T23:45:37 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:37 EDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -31,11 +31,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="addBook([Lapis.libraryapis.BookData;)[pri:0, instance:sample.LibraryApiTests@6973bf95]" started-at="2023-07-20T22:14:59 EDT" name="addBook" data-provider="book data" finished-at="2023-07-20T22:15:07 EDT" duration-ms="7523" status="PASS">
+        <test-method signature="addBook([Lapis.libraryapis.BookData;)[pri:0, instance:sample.LibraryApiTests@6973bf95]" started-at="2023-07-20T23:45:37 EDT" name="addBook" data-provider="book data" finished-at="2023-07-20T23:45:45 EDT" duration-ms="8043" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[Lapis.libraryapis.BookData;@6c2a95d5]]>
+                <![CDATA[[Lapis.libraryapis.BookData;@527937d0]]>
               </value>
             </param>
           </params>
@@ -44,7 +44,7 @@
         </test-method> <!-- addBook -->
       </class> <!-- sample.LibraryApiTests -->
       <class name="datadriven.GoogleMapsTests">
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.GoogleMapsTests@77167fb7]" started-at="2023-07-20T22:14:53 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:53 EDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.GoogleMapsTests@77167fb7]" started-at="2023-07-20T23:45:31 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:31 EDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -55,13 +55,13 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="googleAddLocation()[pri:0, instance:datadriven.GoogleMapsTests@77167fb7]" started-at="2023-07-20T22:14:53 EDT" name="googleAddLocation" description="Serializing Request and Deserializing Response of Post Add Google Loc" finished-at="2023-07-20T22:14:53 EDT" duration-ms="704" status="PASS">
+        <test-method signature="googleAddLocation()[pri:0, instance:datadriven.GoogleMapsTests@77167fb7]" started-at="2023-07-20T23:45:31 EDT" name="googleAddLocation" description="Serializing Request and Deserializing Response of Post Add Google Loc" finished-at="2023-07-20T23:45:32 EDT" duration-ms="905" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleAddLocation -->
       </class> <!-- datadriven.GoogleMapsTests -->
       <class name="datadriven.PurchaseOrderTests">
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:44 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:45 EDT" duration-ms="747" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:22 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:23 EDT" duration-ms="758" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -72,11 +72,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="purchaseAccountLogin()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:45 EDT" name="purchaseAccountLogin" finished-at="2023-07-20T22:14:48 EDT" duration-ms="2780" status="PASS">
+        <test-method signature="purchaseAccountLogin()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:23 EDT" name="purchaseAccountLogin" finished-at="2023-07-20T23:45:26 EDT" duration-ms="3037" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- purchaseAccountLogin -->
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:48 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:48 EDT" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:26 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:26 EDT" duration-ms="3" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -87,11 +87,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="addProduct()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:48 EDT" name="addProduct" finished-at="2023-07-20T22:14:50 EDT" depends-on-methods="datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="2365" status="PASS">
+        <test-method signature="addProduct()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:26 EDT" name="addProduct" finished-at="2023-07-20T23:45:28 EDT" depends-on-methods="datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="2015" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addProduct -->
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:50 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:50 EDT" duration-ms="4" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:28 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:28 EDT" duration-ms="3" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -102,11 +102,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="createOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:50 EDT" name="createOrder" finished-at="2023-07-20T22:14:51 EDT" depends-on-methods="datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="910" status="PASS">
+        <test-method signature="createOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:28 EDT" name="createOrder" finished-at="2023-07-20T23:45:29 EDT" depends-on-methods="datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="801" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createOrder -->
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:51 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:51 EDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:29 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:29 EDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -117,11 +117,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="getOrderDetails()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:51 EDT" name="getOrderDetails" finished-at="2023-07-20T22:14:52 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="837" status="PASS">
+        <test-method signature="getOrderDetails()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:29 EDT" name="getOrderDetails" finished-at="2023-07-20T23:45:30 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="786" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getOrderDetails -->
-        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:52 EDT" name="initiateBaseUri" finished-at="2023-07-20T22:14:52 EDT" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="initiateBaseUri(java.lang.reflect.Method)[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:30 EDT" name="initiateBaseUri" finished-at="2023-07-20T23:45:30 EDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -132,13 +132,13 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiateBaseUri -->
-        <test-method signature="deleteOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T22:14:52 EDT" name="deleteOrder" finished-at="2023-07-20T22:14:53 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.getOrderDetails, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="767" status="PASS">
+        <test-method signature="deleteOrder()[pri:0, instance:datadriven.PurchaseOrderTests@6a01e23]" started-at="2023-07-20T23:45:30 EDT" name="deleteOrder" finished-at="2023-07-20T23:45:31 EDT" depends-on-methods="datadriven.PurchaseOrderTests.createOrder, datadriven.PurchaseOrderTests.getOrderDetails, datadriven.PurchaseOrderTests.addProduct, datadriven.PurchaseOrderTests.purchaseAccountLogin" duration-ms="795" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteOrder -->
       </class> <!-- datadriven.PurchaseOrderTests -->
       <class name="sample.GoogleMapsApiTests">
-        <test-method signature="googleApis()[pri:0, instance:sample.GoogleMapsApiTests@6ce139a4]" started-at="2023-07-20T22:14:53 EDT" name="googleApis" finished-at="2023-07-20T22:14:59 EDT" duration-ms="5889" status="PASS">
+        <test-method signature="googleApis()[pri:0, instance:sample.GoogleMapsApiTests@6ce139a4]" started-at="2023-07-20T23:45:32 EDT" name="googleApis" finished-at="2023-07-20T23:45:37 EDT" duration-ms="5386" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleApis -->
