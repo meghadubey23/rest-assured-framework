@@ -1,6 +1,8 @@
 package apis.libraryapis;
 
-public class GetCoursesPojoResponse {
+import apis.BaseApi;
+
+public class GetCoursesPojoResponse extends BaseApi {
 
     private String instructor;
     private String url;

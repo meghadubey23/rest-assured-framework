@@ -1,6 +1,5 @@
 package entity;
 
-import Utilities.AssertUtility;
 import apis.BaseApi;
 import apis.purchaseorderapis.*;
 
@@ -16,25 +15,18 @@ public class PurchaseOrderEntity extends BaseEntity {
         this.expectedResponse = expectedResponse;
     }
 
-    public void verify(List<List<Object>> list) {
-        for (List<Object> subList : list) {
-            AssertUtility.assertEquals(subList.get(0), subList.get(1), subList.get(2));
-        }
-        System.out.println("\n");
-    }
-
     public void verifyLogin() {
         LoginResponse actual = (LoginResponse) actualResponse;
         LoginResponse expected = (LoginResponse) expectedResponse;
 
-        List<List<Object>> list = new ArrayList<>();
+        List<String[]> list = new ArrayList<>();
 
-        List<Object> subList = new ArrayList<>();
-        subList.add(actual.getMessage());
-        subList.add(expected.getMessage());
-        subList.add("Success Message");
-
+        String[] subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "Success Message";
         list.add(subList);
+
         verify(list);
     }
 
@@ -42,14 +34,14 @@ public class PurchaseOrderEntity extends BaseEntity {
         AddProductResponse actual = (AddProductResponse) actualResponse;
         AddProductResponse expected = (AddProductResponse) actualResponse;
 
-        List<List<Object>> list = new ArrayList<>();
+        List<String[]> list = new ArrayList<>();
 
-        List<Object> subList = new ArrayList<>();
-        subList.add(actual.getMessage());
-        subList.add(expected.getMessage());
-        subList.add("Success Message");
-
+        String[] subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "Success Message";
         list.add(subList);
+
         verify(list);
     }
 
@@ -57,18 +49,18 @@ public class PurchaseOrderEntity extends BaseEntity {
         CreateOrderResponse actual = (CreateOrderResponse) actualResponse;
         CreateOrderResponse expected = (CreateOrderResponse) actualResponse;
 
-        List<List<Object>> list = new ArrayList<>();
+        List<String[]> list = new ArrayList<>();
 
-        List<Object> subList = new ArrayList<>();
-        subList.add(actual.getMessage());
-        subList.add(expected.getMessage());
-        subList.add("Success Message");
+        String[] subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "Success Message";
         list.add(subList);
 
-        subList = new ArrayList<>();
-        subList.add(actual.getProductOrderId()[0]);
-        subList.add(expected.getProductOrderId()[0]);
-        subList.add("productOrderId");
+        subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "productOrderId";
         list.add(subList);
 
         verify(list);
@@ -78,67 +70,67 @@ public class PurchaseOrderEntity extends BaseEntity {
         GetOrderDetailsResponse actual = (GetOrderDetailsResponse) actualResponse;
         GetOrderDetailsResponse expected = (GetOrderDetailsResponse) actualResponse;
 
-        List<List<Object>> list = new ArrayList<>();
+        List<String[]> list = new ArrayList<>();
 
-        List<Object> subList = new ArrayList<>();
-        subList.add(actual.getMessage());
-        subList.add(expected.getMessage());
-        subList.add("Success Message");
+        String[] subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "Success Message";
         list.add(subList);
 
         if (actual.getData() != null) {
-            subList = new ArrayList<>();
-            subList.add(actual.getData().get_id());
-            subList.add(expected.getData().get_id());
-            subList.add("_id");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "_id";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getOrderById());
-            subList.add(expected.getData().getOrderById());
-            subList.add("OrderById");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "OrderById";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getOrderBy());
-            subList.add(expected.getData().getOrderBy());
-            subList.add("orderBy");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "orderBy";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getProductOrderedId());
-            subList.add(expected.getData().getProductOrderedId());
-            subList.add("productOrderedId");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "productOrderedId";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getProductName());
-            subList.add(expected.getData().getProductName());
-            subList.add("productName");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "productName";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getCountry());
-            subList.add(expected.getData().getCountry());
-            subList.add("country");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "country";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getProductDescription());
-            subList.add(expected.getData().getProductDescription());
-            subList.add("productDescription");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "productDescription";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().getOrderPrice());
-            subList.add(expected.getData().getOrderPrice());
-            subList.add("orderPrice");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "orderPrice";
             list.add(subList);
 
-            subList = new ArrayList<>();
-            subList.add(actual.getData().get__v());
-            subList.add(expected.getData().get__v());
-            subList.add("__v");
+            subList = new String[3];
+            subList[0] = actual.getMessage();
+            subList[1] = expected.getMessage();
+            subList[2] = "__v";
             list.add(subList);
         }
 
@@ -149,14 +141,14 @@ public class PurchaseOrderEntity extends BaseEntity {
         DeleteApiResponse actual = (DeleteApiResponse) actualResponse;
         DeleteApiResponse expected = (DeleteApiResponse) expectedResponse;
 
-        List<List<Object>> list = new ArrayList<>();
+        List<String[]> list = new ArrayList<>();
 
-        List<Object> subList = new ArrayList<>();
-        subList.add(actual.getMessage());
-        subList.add(expected.getMessage());
-        subList.add("Success Message");
-
+        String[] subList = new String[3];
+        subList[0] = actual.getMessage();
+        subList[1] = expected.getMessage();
+        subList[2] = "Success Message";
         list.add(subList);
+
         verify(list);
     }
 }

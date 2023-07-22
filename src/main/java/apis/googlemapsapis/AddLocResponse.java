@@ -1,6 +1,8 @@
 package apis.googlemapsapis;
 
-public class AddLocResponse {
+import apis.BaseApi;
+
+public class AddLocResponse extends BaseApi {
     private String status;
     private String place_id;
     private String scope;
